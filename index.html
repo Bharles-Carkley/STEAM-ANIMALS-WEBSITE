@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            
+          }
+        },
+        fontFamily: {
+          'helvetica': ['Helvetica Now Text Large', 'Helvetica', 'Arial', 'sans-serif'],
+        },
+      }
+    }
+  </script>
+</head>
+<body class="font-helvetica">
+  <div class="w-full h-screen bg-black lg:h-16 flex">
+    <div class="w-2/12 h-16 lg:hidden">
+      <div class="h-full flex flex-col justify-center ml-3 cursor-pointer" onclick="toggleMenu()">
+        <span class="w-6 h-0.5 bg-white rounded-full my-1 transition-transform" id="span1"></span>
+        <span class="w-6 h-0.5 bg-white rounded-full my-1 transition-transform" id="span2"></span>
+        <span class="w-6 h-0.5 bg-white rounded-full my-1 transition-transform" id="span3"></span>
+      </div>
+    </div>
+    <div class="h-3/6 w-full black flex flex-col text-2xl items-center justify-center text-white mt-16 -translate-x-full transition-transform lg:flex-row lg:mt-0 lg:translate-x-0 lg:gap-8 lg:h-full lg:text-lg" id="menuItems">
+      <a class="my-4 cursor-pointer">Home</a>
+      <a class="my-4 cursor-pointer">Facts</a>
+      <a class="my-4 cursor-pointer">Threats</a>
+      <a class="my-4 cursor-pointer">Merch</a>
+    </div>
+    <div class="w-2/12 h-16 lg:hidden"></div>
+  </div>
+</body>
+<script>
+  function toggleMenu() {
+    const spanIds = ['span1', 'span2', 'span3'];
+    const classes = [
+      ['rotate-45', 'translate-y-2.5'],
+      ['opacity-0'],
+      ['-rotate-45', '-translate-y-2.5']
+    ];
+
+    spanIds.forEach((spanId, index) => {
+      const span = document.getElementById(spanId);
+      classes[index].forEach(className => span.classList.toggle(className));
+    });
+
+    const menuItems = document.getElementById('menuItems');
+
+    menuItems.classList.toggle('translate-x-0')
+  }
+</script>
+</html>
