@@ -10,7 +10,7 @@
       theme: {
         extend: {
           colors: {
-            
+            'primary': '#0065d8'
           }
         },
         fontFamily: {
@@ -20,8 +20,8 @@
     }
   </script>
 </head>
-<body class="font-helvetica">
-  <div class="w-full h-screen bg-black lg:h-16 flex">
+<body class="font-helvetica bg-white">
+  <div class="w-full h-16 flex fixed bg-black transition-all duration-500" id="navbar">
     <div class="w-2/12 h-16 lg:hidden">
       <div class="h-full flex flex-col justify-center ml-3 cursor-pointer" onclick="toggleMenu()">
         <span class="w-6 h-0.5 bg-white rounded-full my-1 transition-transform" id="span1"></span>
@@ -29,17 +29,75 @@
         <span class="w-6 h-0.5 bg-white rounded-full my-1 transition-transform" id="span3"></span>
       </div>
     </div>
-    <div class="h-3/6 w-full black flex flex-col text-2xl items-center justify-center text-white mt-16 -translate-x-full transition-transform lg:flex-row lg:mt-0 lg:translate-x-0 lg:gap-8 lg:h-full lg:text-lg" id="menuItems">
-      <a class="my-4 cursor-pointer">Home</a>
+    <div class="hidden w-2/12 h-16 lg:flex justify-center items-center">
+      <img src="./img/logo-1.svg" class="h-3/4 rounded-full">
+    </div>
+    <div class="h-3/6 w-full flex flex-col text-2xl items-center justify-center text-white mt-16 opacity-0 lg:opacity-100 lg:flex-row lg:mt-0 lg:gap-8 lg:h-full lg:text-lg" id="menuItems">
+      <a class="my-4 cursor-pointer font-bold underline">Home</a>
       <a class="my-4 cursor-pointer">Facts</a>
       <a class="my-4 cursor-pointer">Threats</a>
       <a class="my-4 cursor-pointer">Merch</a>
     </div>
+    <div class="w-2/12 h-16 hidden lg:flex"></div>
     <div class="w-2/12 h-16 lg:hidden"></div>
+  </div>
+  <div class="w-full h-16"></div>
+  
+  <div class="w-full h-[800px] bg-[#1c1c1c] flex items-center justify-center text-white flex-col">
+    <h1 class="text-6xl font-bold">Snow Leopard Foundation</h1>
+    <div class="flex flex-row items-center justify-center w-full">
+      <img src="img/snow-leopard-1.png" class="w-1/4 mt-8 mx-4 aspect-square">
+      <img src="img/snow-leopard-2.png" class="w-1/4 mt-8 mx-4 aspect-square">
+      <img src="img/snow-leopard-3.png" class="w-1/4 mt-8 mx-4 aspect-square">
+    </div>
+  </div>
+  <div class="w-full h-[800px] bg-black flex items-center justify-center text-white flex-col">
+    <h1 class="text-6xl font-bold">Facts</h1>
+    <ul class="list-disc mt-4">
+      <li class="mb-2">Vulnerable</li>
+      <li class="mb-2">4000 left</li>
+      <li class="mb-2">Live in High Mountains</li>
+      <li class="mb-2">Live in the Himalayas</li>
+      <li class="mb-2">Predator</li>
+    </ul>
+  </div>
+  <div class="w-full h-[800px] bg-[#1c1c1c] flex items-center justify-center text-white flex-col">
+    <h1 class="text-6xl font-bold">Threats</h1>
+    <p class="w-9/12 mt-4">There are many threats to the beloved Snow Leopard and our organisation does our best to prevent these Snow Leopards from being victim to endangerment. The sole predator of snow leopards are Humans, from poaching, habitat loss and decrease in prey, we are the reason for the vulnreability of these cats. The other big impact is climate change, the rising temperatures severely impact their habitats in the high mountains where temperatures are supposed to remain cold, climate change has caused 30%+ in the loss of snow leopard habitats. To stop these threats we must take <b>Action</b>, this includes donating to organisations dedicated to preventing animals such as the snow leopard from extinction. We also must act socially, we need to erradicate poaching, we need to know what we are destroying before we do it to stop habitat loss and we need to combat climate change as a whole.</p>
+  </div>
+  <div class="w-full h-[800px] bg-black flex items-center justify-center text-white flex-col lg:flex-row">
+    <div class="w-2/4 lg:w-96 h-96 bg-white m-8 flex items-center flex-col cursor-pointer">
+      <div class="w-full">
+        <img src="./img/snow-leopard-1.png">
+      </div>
+      <div class="w-full h-16 bg-black flex items-center justify-center flex-col">
+        <p class="font-semibold">Water Bottle</p>
+        <p class="text-gray-500">$45</p>
+      </div>
+    </div>
+    <div class="w-2/4 lg:w-96 h-96 bg-white m-8 flex items-center flex-col cursor-pointer">
+      <div class="w-full">
+        <img src="./img/snow-leopard-1.png">
+      </div>
+      <div class="w-full h-16 bg-black flex items-center justify-center flex-col">
+        <p class="font-semibold">Water Bottle</p>
+        <p class="text-gray-500">$45</p>
+      </div>
+    </div>
+    <div class="w-2/4 lg:w-96 h-96 bg-white m-8 flex items-center flex-col cursor-pointer">
+      <div class="w-full">
+        <img src="./img/snow-leopard-1.png">
+      </div>
+      <div class="w-full h-16 bg-black flex items-center justify-center flex-col">
+        <p class="font-semibold">Water Bottle</p>
+        <p class="text-gray-500">$45</p>
+      </div>
+    </div>
   </div>
 </body>
 <script>
   function toggleMenu() {
+    const navbar = document.getElementById('navbar')
     const spanIds = ['span1', 'span2', 'span3'];
     const classes = [
       ['rotate-45', 'translate-y-2.5'],
@@ -54,7 +112,18 @@
 
     const menuItems = document.getElementById('menuItems');
 
-    menuItems.classList.toggle('translate-x-0')
+    menuItems.classList.toggle('opacity-100');
+    navbar.classList.toggle('h-full');
+  }
+
+  window.onscroll = function() {
+    const navbar = document.getElementById("navbar");
+
+    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+      navbar.classList.add('bg-[#262626]');
+    } else {
+      navbar.classList.remove('bg-[#262626]');
+    }
   }
 </script>
 </html>
